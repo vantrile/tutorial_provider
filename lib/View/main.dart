@@ -44,7 +44,6 @@ class _MyHomePageState extends BaseState<MainModel, MyHomePage> {
 
   @override
   buildViewByState(BuildContext context, MainModel model) {
-    print("${model.count}");
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

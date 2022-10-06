@@ -5,7 +5,6 @@ import 'package:tutorial_provider/di/locator.dart';
 
 abstract class BaseState<M extends BaseModel, S extends StatefulWidget>
     extends State<S> {
-
   late M model;
 
   @override
@@ -13,14 +12,14 @@ abstract class BaseState<M extends BaseModel, S extends StatefulWidget>
     // TODO: implement initState
     super.initState();
     createModel();
-    model.valueUpdate.addListener(() {
-      print("value update");
-    });
+    // model.valueUpdate.addListener(() {
+    //   print("value update");
+    // });
   }
 
   createModel() => model = locator<M>();
 
-  void onRetry(){
+  void onRetry() {
     final model = context.read<M>();
     model.loadData();
   }
@@ -29,8 +28,10 @@ abstract class BaseState<M extends BaseModel, S extends StatefulWidget>
   Widget build(BuildContext context) {
     print("rebuild UI");
     return ChangeNotifierProvider<M>.value(
-      value: model, child: Consumer<M>(builder: (context, model, child
-    ) => buildViewByState(context, model)),);
+      value: model,
+      child: Consumer<M>(
+          builder: (context, model, child) => buildViewByState(context, model)),
+    );
   }
 
   buildViewByState(BuildContext context, M model) {
@@ -38,5 +39,4 @@ abstract class BaseState<M extends BaseModel, S extends StatefulWidget>
     print("build View by State is running");
     return Container();
   }
-
 }
