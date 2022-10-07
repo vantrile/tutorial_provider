@@ -9,7 +9,6 @@ abstract class BaseState<M extends BaseModel, S extends StatefulWidget>
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     createModel();
     // model.valueUpdate.addListener(() {

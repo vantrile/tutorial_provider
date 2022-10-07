@@ -1,6 +1,6 @@
 import 'package:injectable/injectable.dart';
 import 'package:tutorial_provider/domain/respositories/category_respositories.dart';
-import 'package:tutorial_provider/dto/category_dto.dart';
+
 
 import '../entities/category_entity.dart';
 
