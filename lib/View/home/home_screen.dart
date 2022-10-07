@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tutorial_provider/View/categories/categories_widget.dart';
 
 import '../../base_state/base_state.dart';
 import 'main_model.dart';
@@ -20,19 +21,19 @@ class _MyHomePageState extends BaseState<HomeModel, MyHomePage> {
 
   @override
   buildViewByState(BuildContext context, HomeModel model) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          const Text(
-            'You have pushed the button this many times:',
-          ),
-          Text(
-            model.count.toString(),
-            style: Theme.of(context).textTheme.headline4,
-          ),
-        ],
-      ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        const CategoriesWidget(),
+        const Text(
+          'You have pushed the button this many times:',
+        ),
+        Text(
+          model.count.toString(),
+          style: Theme.of(context).textTheme.headline4,
+        ),
+      ],
     );
   }
 
