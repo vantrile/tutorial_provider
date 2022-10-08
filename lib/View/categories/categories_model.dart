@@ -1,5 +1,6 @@
 import 'package:injectable/injectable.dart';
 import 'package:tutorial_provider/base_state/base_model.dart';
+import 'package:tutorial_provider/base_state/event.dart';
 import 'package:tutorial_provider/enum.dart';
 
 import '../../domain/entities/category_entity.dart';
@@ -19,12 +20,18 @@ class CategoriesModel extends BaseModel {
   @override
   ViewState get initState => ViewState.initial;
 
-
-
   @override
   Future<void> executeLoadData() async{
-    print("execute data categories");
-    listCategories = await getCategoryUseCase.execute();
+    // showProcessing();
+    try{
+      print("execute data categories");
+      listCategories = await getCategoryUseCase.execute();
+
+      emitEvent(SuccessEvent());
+    }catch(error,stackTrace){
+      emitError(error.toString(),stackTrace: stackTrace);
+    }
+
   }
 
 }

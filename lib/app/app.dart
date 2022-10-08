@@ -24,6 +24,7 @@ class _AppState extends State<App> {
       providers: [
         ChangeNotifierProvider.value(value: _model),
         ValueListenableProvider.value(value: _model.countShopping),
+        ValueListenableProvider.value(value: _model.showProgressDialog),
       ],
       child: Consumer<AppModel>(builder: (context, model, _) {
         return MaterialApp(

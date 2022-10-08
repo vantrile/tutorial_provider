@@ -7,12 +7,17 @@ import '../base_state/event.dart';
 @lazySingleton
 class AppModel extends ChangeNotifier {
 
+  AppState state = AppState.uninitialized;
   late final countShopping = ValueNotifier<int>(0);
   final eventBus = ValueNotifier<Event>(Event.none());
   final showProgressDialog =
       ValueNotifier<ProgressDialogState>(ProgressDialogState(isShow: false));
 
-  init() async {}
+  init() async {
+    await Future.delayed(const Duration(seconds: 3));
+    state = AppState.initialized;
+    notifyListeners();
+  }
 
   void toggleProgressDialog({bool? show, ProgressDialogType? type}) {
     showProgressDialog.value = ProgressDialogState(

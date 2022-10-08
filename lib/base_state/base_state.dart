@@ -3,6 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:tutorial_provider/base_state/base_model.dart';
 import 'package:tutorial_provider/di/locator.dart';
 
+import 'event.dart';
+
 abstract class BaseState<M extends BaseModel, S extends StatefulWidget>
     extends State<S> {
   late M model;
@@ -11,16 +13,31 @@ abstract class BaseState<M extends BaseModel, S extends StatefulWidget>
   void initState() {
     super.initState();
     createModel();
-    // model.valueUpdate.addListener(() {
-    //   print("value update");
-    // });
+    onModelReady();
+    model.event.addListener(() {
+      onEvent(model.event.value);
+    });
   }
 
   createModel() => model = locator<M>();
 
+  void onModelReady() {
+    // Inherit function
+  }
+
   void onRetry() {
     final model = context.read<M>();
     model.loadData();
+  }
+
+  void onEvent(Event event) {
+    if (event is ErrorEvent) {
+      showError(event.error);
+    }
+  }
+
+  void showError(dynamic error) {
+    print("error Message: ${error.toString()}");
   }
 
   @override
@@ -34,7 +51,7 @@ abstract class BaseState<M extends BaseModel, S extends StatefulWidget>
   }
 
   buildViewByState(BuildContext context, M model) {
-    // final model = context.read<M>();
+
     print("build View by State is running");
     return Container();
   }

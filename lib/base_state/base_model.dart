@@ -28,6 +28,14 @@ abstract class BaseModel extends ChangeNotifier {
     }
   }
 
+  void showProcessing({ProgressDialogType? type}) {
+    appModel.toggleProgressDialog(show: true, type: type);
+  }
+
+  void hideProcessing() {
+    appModel.toggleProgressDialog(show: false);
+  }
+
   Future<void> loadData({bool refresh = false}) async {
     try {
       if (!refresh) setState(ViewState.loading);
@@ -49,6 +57,7 @@ abstract class BaseModel extends ChangeNotifier {
     if (viewState == ViewState.error) {
       this.error = error;
     }
+    notifyListeners();
   }
 
   emitEvent(Event event) {

@@ -21,28 +21,23 @@ class _CategoriesWidgetState
   buildViewByState(BuildContext context, CategoriesModel model) {
     // TODO: implement buildViewByState
     return Container(
-      height: 200,
-      padding: const EdgeInsets.all(8.0),
-      child: ListView.builder(
-        itemBuilder: (context, index) {
-          final item = model.listCategories[index];
-          return Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                SizedBox(
-                  width: 50,
-                  height: 50,
-                  child: Image.network(item.icon),
-                ),
-                Text(item.name),
-              ],
-            ),
-          );
-        },
-        scrollDirection: Axis.horizontal,
-        itemCount: model.listCategories.length,
-      ),
-    );
+        height: 200,
+        padding: const EdgeInsets.all(8.0),
+        child: GridView.builder(
+          primary: false,
+          shrinkWrap: true,
+          padding: EdgeInsets.zero,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            mainAxisSpacing: 8.0,
+            crossAxisSpacing: 8.0,
+            childAspectRatio: 167 / 96,
+          ),
+          itemBuilder: (context, index) => SizedBox(
+              width: 20,
+              height: 20,
+              child: Image.network(model.listCategories[index].icon)),
+          itemCount: model.listCategories.length,
+        ));
   }
 }

@@ -12,6 +12,7 @@ class CategoryService extends BaseService {
   Future<List<CategoryDTO>> getCategories() async {
     client.dio.options.baseUrl = BaseUrl.url;
     final data = await get(CategoryApi.getCategory);
+    print("category: ${data.toString()}");
     return (data["data"] as List).map((e) => CategoryDTO.fromJson(e)).toList();
   }
 }
