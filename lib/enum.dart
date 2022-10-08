@@ -1,6 +1,9 @@
 
 import 'package:flutter/material.dart';
 
+enum ViewState {
+  initial, loading, loaded, error
+}
 enum ProgressDialogType{
   processing,
   verifying;

@@ -14,11 +14,19 @@ ApiException _$ApiExceptionFromJson(Map<String, dynamic> json) => ApiException(
       reason: json['reason'] as String?,
     );
 
-Map<String, dynamic> _$ApiExceptionToJson(ApiException instance) =>
-    <String, dynamic>{
-      'code': instance.code,
-      'message': instance.message,
-      'status': instance.status,
-      'data': instance.data,
-      'reason': instance.reason,
-    };
+Map<String, dynamic> _$ApiExceptionToJson(ApiException instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('code', instance.code);
+  writeNotNull('message', instance.message);
+  writeNotNull('status', instance.status);
+  writeNotNull('data', instance.data);
+  writeNotNull('reason', instance.reason);
+  return val;
+}

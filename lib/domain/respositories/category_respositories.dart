@@ -6,12 +6,14 @@ import '../entities/category_entity.dart';
 @injectable
 class CategoryRepositories {
   final CategoryService service;
+
   CategoryRepositories(this.service);
 
-  Future<CategoryEntity> getCategories() async{
-
+  Future<List<CategoryEntity>> getCategories() async {
     final data = await service.getCategories();
-    return CategoryEntity(id: data.id, name: data.name, slug: data.slug, icon: data.icon);
+    return data
+        .map((e) =>
+            CategoryEntity(id: e.id, name: e.name, slug: e.slug, icon: e.icon))
+        .toList();
   }
-
 }

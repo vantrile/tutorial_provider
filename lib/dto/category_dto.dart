@@ -1,9 +1,11 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import '../domain/entities/category_entity.dart';
+
 part 'category_dto.g.dart';
 
 @JsonSerializable()
-class CategoryDTO{
+class CategoryDTO {
   @JsonKey(name: "id")
   final int id;
   @JsonKey(name: "name")
@@ -12,10 +14,22 @@ class CategoryDTO{
   final String slug;
   @JsonKey(name: "icon")
   final String icon;
+  @JsonKey(name: "path")
+  final String? path;
+  @JsonKey(name: "parent_id")
+  final int? parentId;
+  @JsonKey(name: "total_product")
+  final int? totalProduct;
 
-  CategoryDTO({required this.id, required this.name, required this.slug, required this.icon});
+  CategoryDTO(
+      {required this.id,
+      required this.name,
+      required this.slug,
+      required this.icon,
+      this.path,
+      this.parentId,
+      this.totalProduct});
 
-
-  factory CategoryDTO.fromJson(Map<String,dynamic> json) => _$CategoryDTOFromJson(json);
-
+  factory CategoryDTO.fromJson(Map<String, dynamic> json) =>
+      _$CategoryDTOFromJson(json);
 }

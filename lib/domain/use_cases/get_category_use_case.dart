@@ -10,7 +10,7 @@ class GetCategoryUseCase {
 
   GetCategoryUseCase(this.categoryRepositories);
 
-  Future<CategoryEntity> execute() async {
-    return await categoryRepositories.getCategories();
+  Future<List<CategoryEntity>> execute() async {
+    return categoryRepositories.getCategories();
   }
 }

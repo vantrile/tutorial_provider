@@ -4,7 +4,7 @@ import 'package:tutorial_provider/enum.dart';
 
 import '../base_state/event.dart';
 
-@singleton
+@lazySingleton
 class AppModel extends ChangeNotifier {
 
   late final countShopping = ValueNotifier<int>(0);
