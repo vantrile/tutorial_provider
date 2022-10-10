@@ -21,17 +21,17 @@ class CategoriesModel extends BaseModel {
   ViewState get initState => ViewState.initial;
 
   @override
-  Future<void> executeLoadData() async{
+  Future<void> executeLoadData() async {
     // showProcessing();
-    try{
+    try {
       print("execute data categories");
       listCategories = await getCategoryUseCase.execute();
 
       emitEvent(SuccessEvent());
-    }catch(error,stackTrace){
-      emitError(error.toString(),stackTrace: stackTrace);
+    } catch (error, stackTrace) {
+      emitError(error.toString(), stackTrace: stackTrace);
+    } finally {
+      // hideProcessing();
     }
-
   }
-
 }

@@ -7,7 +7,7 @@ class CategoryApi{
 }
 
 class ProductApi{
-  static const getProductList = "api/product?search=&category_id=&page=1&size=20";
+  static const getProductList = "api/product?search";//
 }
 
 class ProductBestSellerApi{

@@ -40,17 +40,15 @@ class _AppState extends State<App> {
                   data: data.copyWith(textScaleFactor: 1),
                   child: child ?? const SizedBox(),
                 ),
-                // Consumer<ProgressDialogState>(
-                //   builder: (context, state, child) => Visibility(
-                //     visible: state.isShow,
-                //     child: Container(
-                //       color: Colors.grey,
-                //       child: const Center(
-                //         child: Text("Center String"),
-                //       ),
-                //     ),
-                //   ),
-                // ),
+                Visibility(
+                  visible: context.read<ProgressDialogState>().isShow,
+                  child: Container(
+                    color: Colors.grey,
+                    child: const Center(
+                      child: Text("Center String"),
+                    ),
+                  ),
+                ),
               ],
             );
           },

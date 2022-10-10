@@ -20,6 +20,9 @@ class _MyHomePageState extends State<MyHomePage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: const <Widget>[
           CategoriesWidget(),
+          SizedBox(
+            height: 20,
+          ),
           Text(
             'You have pushed the button this many times:',
           ),
