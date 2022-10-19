@@ -6,9 +6,9 @@ part 'product_dto.g.dart';
 class ProductDTO {
 
   @JsonKey(name: "id")
-  final int id;
+  final int? id;
   @JsonKey(name: "category_id")
-  final int categoryId;
+  final int? categoryId;
   @JsonKey(name: "name")
   final String? name;
   @JsonKey(name: "price")

@@ -12,8 +12,7 @@ class ProductService extends BaseService {
 
   Future<List<ProductDTO>> getProducts(ProductParams params) async {
     client.dio.options.baseUrl = BaseUrl.url;
-    final data = await get(
-        "${ProductApi.getProductList}=&category_id=${params.categoryId}&page=${params.pageNumber}&size=${params.pageNumber}");
+    final data = await get(ProductApi.getProductList, queryParameters: params.toJson());
     return (data["data"] as List).map((e) => ProductDTO.fromJson(e)).toList();
   }
 }

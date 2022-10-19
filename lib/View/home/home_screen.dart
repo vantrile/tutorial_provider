@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tutorial_provider/View/categories/categories_widget.dart';
 
+import '../products/product_screen.dart';
+
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
 
@@ -15,24 +17,20 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text("Home Screen"),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: const <Widget>[
-          CategoriesWidget(),
-          SizedBox(
-            height: 20,
-          ),
-          Text(
-            'You have pushed the button this many times:',
-          ),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: const <Widget>[
+            CategoriesWidget(),
+            SizedBox(
+              height: 20,
+            ),
+            ProductWidget(),
+          ],
+        ),
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: _incrementCounter,
-      //   tooltip: 'Increment',
-      //   child: const Icon(Icons.add),
-      // ), // This trailing comma makes auto-formatting nicer for build methods.
+
     );
   }
 }

@@ -14,7 +14,6 @@ class CategoriesModel extends BaseModel {
   CategoriesModel({required this.getCategoryUseCase});
 
   @override
-  // TODO: implement autoLoad
   bool get autoLoad => true;
 
   @override
