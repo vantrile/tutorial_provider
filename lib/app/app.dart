@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:tutorial_provider/app/app_model.dart';
 import 'package:tutorial_provider/di/locator.dart';
@@ -27,31 +27,40 @@ class _AppState extends State<App> {
         ValueListenableProvider.value(value: _model.showProgressDialog),
       ],
       child: Consumer<AppModel>(builder: (context, model, _) {
-        return MaterialApp(
-          title: "Sume App",
-          debugShowCheckedModeBanner: false,
-          initialRoute: Routes.root,
-          onGenerateRoute: getRoute,
-          builder: (BuildContext context, Widget? child) {
-            final MediaQueryData data = MediaQuery.of(context);
-            return Stack(
-              children: [
-                MediaQuery(
-                  data: data.copyWith(textScaleFactor: 1),
-                  child: child ?? const SizedBox(),
-                ),
-                Visibility(
-                  visible: context.read<ProgressDialogState>().isShow,
-                  child: Container(
-                    color: Colors.grey,
-                    child: const Center(
-                      child: Text("Center String"),
+        return AnnotatedRegion<SystemUiOverlayStyle>(
+          value:
+              SystemUiOverlayStyle.light.copyWith(statusBarColor: Colors.red),
+          child: GestureDetector(
+            onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+            child: MaterialApp(
+              title: "Sume App",
+              debugShowCheckedModeBanner: false,
+              initialRoute: Routes.root,
+              onGenerateRoute: getRoute,
+              builder: (BuildContext context, Widget? child) {
+                return Stack(
+                  children: [
+                    MediaQuery(
+                        data:
+                            MediaQuery.of(context).copyWith(textScaleFactor: 1),
+                        child: child ?? const SizedBox()),
+                    Consumer<ProgressDialogState>(
+                      builder: (context, state, child) => Visibility(
+                        visible: true,
+                        child: Container(
+                          color: Colors.white.withOpacity(0.9),
+                          child: const Center(
+                            child: Text("Processing...",
+                                style: TextStyle(color: Colors.red)),
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-              ],
-            );
-          },
+                  ],
+                );
+              },
+            ),
+          ),
         );
       }),
     );

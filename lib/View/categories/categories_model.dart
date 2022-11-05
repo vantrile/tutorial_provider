@@ -21,7 +21,7 @@ class CategoriesModel extends BaseModel {
 
   @override
   Future<void> executeLoadData() async {
-    // showProcessing();
+    showProcessing();
     try {
       print("execute data categories");
       listCategories = await getCategoryUseCase.execute();
@@ -30,7 +30,7 @@ class CategoriesModel extends BaseModel {
     } catch (error, stackTrace) {
       emitError(error.toString(), stackTrace: stackTrace);
     } finally {
-      // hideProcessing();
+      hideProcessing();
     }
   }
 }
