@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:tutorial_provider/View/categories/categories_model.dart';
 import 'package:tutorial_provider/base_state/base_state.dart';
-import 'package:tutorial_provider/domain/entities/category_entity.dart';
+
+import '../../data/domain/entities/category_entity.dart';
+
 
 class CategoriesWidget extends StatefulWidget {
   const CategoriesWidget({Key? key}) : super(key: key);

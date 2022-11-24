@@ -3,8 +3,9 @@ import 'package:tutorial_provider/base_state/base_model.dart';
 import 'package:tutorial_provider/base_state/event.dart';
 import 'package:tutorial_provider/enum.dart';
 
-import '../../domain/entities/category_entity.dart';
-import '../../domain/use_cases/get_category_use_case.dart';
+import '../../data/domain/entities/category_entity.dart';
+import '../../data/domain/use_cases/get_category_use_case.dart';
+
 
 @injectable
 class CategoriesModel extends BaseModel {

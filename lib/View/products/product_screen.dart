@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:tutorial_provider/View/products/product_model.dart';
 import 'package:tutorial_provider/base_state/base_state.dart';
-import 'package:tutorial_provider/domain/entities/product_entity.dart';
+
+
+import '../../data/domain/entities/product_entity.dart';
 
 class ProductWidget extends StatefulWidget {
   const ProductWidget({Key? key}) : super(key: key);

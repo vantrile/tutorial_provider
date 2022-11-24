@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tutorial_provider/base_state/base_model.dart';
-import 'package:tutorial_provider/di/locator.dart';
 
+import '../data/di/locator.dart';
 import 'event.dart';
 
 abstract class BaseState<M extends BaseModel, S extends StatefulWidget>

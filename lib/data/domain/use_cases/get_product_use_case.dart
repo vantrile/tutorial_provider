@@ -1,7 +1,9 @@
 import 'package:injectable/injectable.dart';
-import 'package:tutorial_provider/domain/entities/product_entity.dart';
-import 'package:tutorial_provider/domain/respositories/product_repositories.dart';
+
 import 'package:tutorial_provider/dto/request/product_params.dart';
+
+import '../entities/product_entity.dart';
+import '../respositories/product_repositories.dart';
 
 @injectable
 class GetProductUseCase {

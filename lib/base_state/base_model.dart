@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:tutorial_provider/app/app_model.dart';
-import 'package:tutorial_provider/di/locator.dart';
 import 'package:tutorial_provider/enum.dart';
 
+import '../data/di/locator.dart';
 import 'event.dart';
 
 abstract class BaseModel extends ChangeNotifier {

@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:tutorial_provider/View/categories/categories_model.dart';
+import 'package:tutorial_provider/View/master/master_model.dart';
 import 'package:tutorial_provider/app/app_model.dart';
-import 'package:tutorial_provider/di/locator.dart';
 
 import '../View/home/home_screen.dart';
+import '../View/master/master_screen.dart';
 import '../View/product_by_category/product.dart';
+import '../data/di/locator.dart';
 import '../res/routes.dart';
 
 class App extends StatefulWidget {
@@ -18,6 +21,7 @@ class App extends StatefulWidget {
 class _AppState extends State<App> {
   final _model = locator<AppModel>();
 
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -25,6 +29,7 @@ class _AppState extends State<App> {
         ChangeNotifierProvider.value(value: _model),
         ValueListenableProvider.value(value: _model.countShopping),
         ValueListenableProvider.value(value: _model.showProgressDialog),
+
       ],
       child: Consumer<AppModel>(builder: (context, model, _) {
         return AnnotatedRegion<SystemUiOverlayStyle>(
@@ -46,7 +51,7 @@ class _AppState extends State<App> {
                         child: child ?? const SizedBox()),
                     Consumer<ProgressDialogState>(
                       builder: (context, state, child) => Visibility(
-                        visible: true,
+                        visible: state.isShow,
                         child: Container(
                           color: Colors.white.withOpacity(0.9),
                           child: const Center(
@@ -73,7 +78,7 @@ Route<dynamic> getRoute(RouteSettings settings) {
     case Routes.root:
       return MaterialPageRoute(
           settings: const RouteSettings(name: Routes.root),
-          builder: (_) => const MyHomePage());
+          builder: (_) => const MasterScreen());
     case Routes.product:
       final args = arguments as ProductArgs;
       return MaterialPageRoute(

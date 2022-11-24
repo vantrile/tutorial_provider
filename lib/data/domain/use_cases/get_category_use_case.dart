@@ -1,8 +1,8 @@
 import 'package:injectable/injectable.dart';
-import 'package:tutorial_provider/domain/respositories/category_respositories.dart';
 
 
 import '../entities/category_entity.dart';
+import '../respositories/category_respositories.dart';
 
 @injectable
 class GetCategoryUseCase {

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tutorial_provider/app/app.dart';
 
-import '../di/locator.dart';
+import '../data/di/locator.dart';
+
 
 void main() async {
   await configureDependencies();

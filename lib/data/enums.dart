@@ -1,0 +1,1 @@
+enum MasterTap {home, discover, chat, profile}
